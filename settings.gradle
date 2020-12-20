@@ -1,0 +1,3 @@
+include ':Loglibrary'
+include ':app'
+rootProject.name = "LSLibiary"
