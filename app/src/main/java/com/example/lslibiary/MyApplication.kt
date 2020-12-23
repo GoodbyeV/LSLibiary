@@ -1,8 +1,10 @@
 package com.example.lslibiary
 
 import android.app.Application
+import com.example.loglibrary.ConsolePrinter
 import com.example.loglibrary.LogConfig
 import com.example.loglibrary.LogManager
+import com.google.gson.Gson
 
 /**
  * author  : Liushuai
@@ -14,6 +16,12 @@ class MyApplication: Application() {
         super.onCreate()
 
         LogManager.init(object : LogConfig() {
+            override fun injectJsonParser(): JsonParser {
+                //序列化工具
+                return JsonParser {src->
+                    Gson().toJson(src)
+                }
+            }
             override fun getGlobalTag(): String {
                 return super.getGlobalTag()
             }
@@ -21,7 +29,7 @@ class MyApplication: Application() {
             override fun enable(): Boolean {
                 return true
             }
-        })
+        }, ConsolePrinter())
     }
 
 }

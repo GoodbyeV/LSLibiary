@@ -11,7 +11,7 @@ import static com.example.loglibrary.LogConfig.MAX_LEN;
  * time    : 2020/12/20 21:23
  * desc    :
  */
-class ConsolePrinter implements LogPrinter {
+public class ConsolePrinter implements LogPrinter {
     @Override
     public void print(@NonNull LogConfig config, int level, String tag, @NonNull String printString) {
         int len=printString.length();

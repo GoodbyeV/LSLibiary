@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.loglibrary.LsLog;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -12,5 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+    }
+    private void printLog(){
+        LsLog.a("9900");
     }
 }

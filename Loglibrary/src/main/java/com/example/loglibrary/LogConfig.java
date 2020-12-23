@@ -14,6 +14,10 @@ public abstract class LogConfig {
         return "LsLog";
     }
 
+    public JsonParser injectJsonParser(){
+        return  null;
+    }
+
     /**
      * 是否启用  false关闭
      * @return

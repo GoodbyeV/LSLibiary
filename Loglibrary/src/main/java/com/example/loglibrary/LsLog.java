@@ -74,7 +74,7 @@ public class LsLog {
             String stackTrace = LogConfig.STACK_TRACE_FORMATTER.format(new Throwable().getStackTrace());
             stringBuilder.append(stackTrace).append("\n");
         }
-        String body = parseBody(contents);
+        String body = parseBody(contents,config);
         stringBuilder.append(body);
         List<LogPrinter> printers=config.printers()!=null? Arrays.asList(config.printers()):LogManager.getInstance().getPrinters();
         if (printers == null) {
@@ -85,7 +85,10 @@ public class LsLog {
         }
     }
 
-    public static String parseBody(@NonNull Object[] contents) {
+    public static String parseBody(@NonNull Object[] contents,@NonNull LogConfig config) {
+        if (config.injectJsonParser() != null) {
+            return config.injectJsonParser().toJson(contents);
+        }
         StringBuilder sb = new StringBuilder();
         for (Object o : contents) {
             sb.append(o.toString()).append(";");
