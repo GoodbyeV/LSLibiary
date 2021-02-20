@@ -12,6 +12,12 @@ import com.google.gson.Gson
  * desc    :
  */
 class MyApplication: Application() {
+    companion object{
+        val instance by lazy {
+            MyApplication()
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
 
